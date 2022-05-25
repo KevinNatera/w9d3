@@ -4,6 +4,8 @@ class FollowToggle  {
         this.userId = this.el.data("userId");
         this.followState =  this.el.data("initialFollowState");
         this.render();
+        this.handleClick = this.handleClick.bind(this);
+        this.el.on("click", this.handleClick);;
     }
 
     render(){
