@@ -23,6 +23,27 @@ class FollowToggle  {
         }
     }
 
+    handleClick(e){
+        e.preventDefault();
+    
+        if (this.followState === "unfollowed") {
+          $.ajax({
+            method: "POST",
+            url: `/users/${this.userId}/follow`,
+            datatype: "JSON"
+          });
+          this.followState = "followed";
+        } else {
+          $.ajax({
+            method: "DELETE",
+            url: `/users/${this.userId}/follow`,
+            datatype: "JSON"
+          });
+          this.followState = "unfollowed";
+        }
+        this.render();
+    }
+
 };
 
 
